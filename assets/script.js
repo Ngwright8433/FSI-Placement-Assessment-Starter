@@ -1,27 +1,91 @@
-// HINT: You can delete this console.log after you no longer need it!
-console.log('JavaScript code has loaded!')
-// First, tell us your name
-let yourName = "Jane Doe" // HINT: Replace this with your own name!
+let gb = 0
+let cc = 0
+let sugar = 0
 
-// We'll use these variables to track the counts of each cookie type
-let gb = 0 // Gingerbread
-let cc = 0 // Chocolate Chip
-let sugar = 0 // Sugar Sprinkle
+let QtyTotal = 0
 
-// selecting the element with an id of credit
-const credit = document.querySelector('#credit')
-// selecting the element with an id of add-gb
-const gbPlusBtn = document.querySelector('#add-gb')
+function updateCookieTotal(displayQuantity){
+    let CookieTotal = document.querySelector("#qty-total")
+    QtyTotal = gb+cc+sugar
+    CookieTotal.textContent = displayQuantity
+    console.log ("total should be updating")
 
-// Code to update name display
-credit.textContent = `Created by ${yourName}`
+}
 
-// Event listener for clicks on the "+" button for Gingerbread cookies
-gbPlusBtn.addEventListener('click', function() {
-// HINT: You can delete this console.log after you no longer need it!
-console.log('Gingerbread + button was clicked!')
+let gbminusBtn = document.querySelector("#minus-gb")
+let gbaddBtn = document.querySelector("#add-gb")
 
-// TODO: Write the code to be run when the "+" button for "Gingerbread" is clicked
+let quantityGb = document.querySelector("#qty-gb")
+
+function updateQuantityGb(displayQuantity){
+    quantityGb.innerHTML = displayQuantity
+}
+
+
+gbminusBtn.addEventListener("click", function(){
+    if (gb > 0 ){
+        gb--
+    } else {
+        window.alert("Nothing in cart")
+    }
+    updateQuantityGb(gb)
+    updateCookieTotal(QtyTotal)
 })
 
-// TODO: Hook up event listeners for the rest of the buttons
+gbaddBtn.addEventListener("click", function(){
+    gb++
+    updateQuantityGb(gb)
+    updateCookieTotal(QtyTotal)
+})
+
+let ccminusBtn = document.querySelector("#minus-cc")
+let ccaddBtn = document.querySelector("#add-cc")
+
+let quantityCC = document.querySelector("#qty-cc")
+
+function updateQuantityCC(displayQuantity){
+    quantityCC.innerHTML = displayQuantity
+}
+
+
+ccminusBtn.addEventListener("click", function(){
+    if (cc > 0 ){
+        cc--
+    } else {
+        window.alert("Nothing in cart")
+    }
+    updateQuantityCC(cc)
+    updateCookieTotal(QtyTotal)
+})
+
+ccaddBtn.addEventListener("click", function(){
+    cc++
+    updateQuantityCC(cc)
+    updateCookieTotal(QtyTotal)
+})
+
+    let sugarminusBtn = document.querySelector('#minus-sugar')
+    let sugaraddBtn = document.querySelector("#add-sugar")
+    
+    let quantitySugar = document.querySelector("#qty-sugar")
+
+    function updateQuantitySugar(displayQuantity){
+        quantitySugar.innerHTML = displayQuantity
+    }
+    
+    
+    sugarminusBtn.addEventListener("click", function(){
+        if (sugar > 0 ){
+            sugar --
+        } else {
+            window.alert("Nothing in cart")
+        }
+        updateQuantitySugar(sugar)
+        updateCookieTotal(QtyTotal)
+    })
+    
+    sugaraddBtn.addEventListener("click", function(){
+        sugar++
+        updateQuantitySugar(sugar)
+        updateCookieTotal(QtyTotal)
+    })
